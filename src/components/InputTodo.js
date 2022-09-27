@@ -8,6 +8,11 @@ function InputTodo(){
         setTodos([...todoList, todo]);//si on veut faire que le dernier soit le premier on met [description, ...todos]on inverse
         setTodo({description: '', date: ''});
     }
+    const deleteTodo = (row)=>{
+        console.log("Button pressed");
+        setTodos(todoList.filter((todo, index)=> index !== row)); //ici on va faire une nouvelle list qui va exclure l'element à l'index et retourner une nouvelle liste avec les elements qui ne sont pas à cette index
+    };
+
     return(
         <div>
             <div className='Title'>
@@ -43,6 +48,7 @@ function InputTodo(){
                             key={index}>
                             <td>{todos.date}</td>
                             <td>{todos.description}</td>
+                            <td><button onClick = {()=>{deleteTodo(index)}}> Delete </button></td>
                         </tr>)}
                 </tbody>
             </table>

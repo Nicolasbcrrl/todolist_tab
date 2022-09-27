@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Table from './Table';
 
 //export default
 function InputTodo(){
@@ -38,20 +39,7 @@ function InputTodo(){
                     Add
                 </button>
             </fieldset>
-            <table className='Text'>
-                <tr>
-                    <th>Date</th><th>Description</th>
-                </tr>
-                <tbody>
-                    {todoList.map((todos, index) => 
-                        <tr className='TableTr' 
-                            key={index}>
-                            <td>{todos.date}</td>
-                            <td>{todos.description}</td>
-                            <td><button onClick = {()=>{deleteTodo(index)}}> Delete </button></td>
-                        </tr>)}
-                </tbody>
-            </table>
+            <Table todoList={todoList} deleteTodo={deleteTodo}/>
         </div>
     );
 }

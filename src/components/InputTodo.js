@@ -10,7 +10,7 @@ function InputTodo(){
     const [todoList, setTodos] = useState([]);
     const addTodo = () => {
         setTodos([...todoList, todo]);//si on veut faire que le dernier soit le premier on met [description, ...todos]on inverse
-        setTodo({description: '', date: ''});
+        setTodo({description: '', date: '', priority: ''});
     }
     const deleteTodo = ()=>{
         if(gridRef.current.getSelectedNodes().length >0){
@@ -26,7 +26,7 @@ function InputTodo(){
         {field: 'description', sortable: true, filter: true, floatingFilter: true, animateRows: true},
         {field: 'date', sortable: true, filter: true, floatingFilter: true, animateRows: true},
         {field: 'priority', sortable: true, filter: true, 
-            cellStyle: params => params.value === '1' ? {color: 'red'} : params.value === '3' ? {color: 'green'} : {color: 'orange'}, 
+            cellStyle: params => params.value === 'High' ? {color: 'red'} : params.value === 'Low' ? {color: 'green'} : {color: 'orange'}, 
             floatingFilter: true, animateRows: true
         },
     ])
@@ -54,7 +54,7 @@ function InputTodo(){
                 </input>
                 <label> Priority : </label>
                 <input
-                    type="number"
+                    type="text"
                     value={todo.priority}
                     onChange={event=>setTodo({...todo, priority: event.target.value})}>
                 </input>

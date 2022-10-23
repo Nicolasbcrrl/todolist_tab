@@ -24,6 +24,7 @@ function InputTodo(){
 
 
     const addTodo = () => {
+        todo.date = todo.date.toISOString().substring(0,10)
         setTodos([...todoList, todo]);//si on veut faire que le dernier soit le premier on met [description, ...todos]on inverse
         setTodo({description: '', date: null, priority: ''});
         console.log(todo.date);
